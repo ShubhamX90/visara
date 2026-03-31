@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Visara Report</title>
+  </head>
+  <body>
+    <div class="report-footer">
+      <p class="footer-disclaimer">$disclaimer_text</p>
+      <p class="footer-meta">Visara | BITS Pilani Research | $report_footer_date</p>
+    </div>
+
+    <header class="report-header">
+      <div class="brand-lockup">
+        <img class="brand-logo" src="$logo_data_uri" alt="Visara logo" />
+      </div>
+      <div class="header-copy">
+        <p class="header-eyebrow">Clinical decision-support report</p>
+        <h1>AI-Assisted DR Screening Report</h1>
+      </div>
+    </header>
+
+    <section class="section case-section">
+      <div class="section-heading">
+        <h2>Patient and case</h2>
+      </div>
+      <div class="case-grid">
+        <div class="meta-item">
+          <span class="meta-label">Patient Reference</span>
+          <span class="meta-value">$patient_ref</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Case ID</span>
+          <span class="meta-value case-id">$case_id</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Eye</span>
+          <span class="meta-value">$eye_side</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date and Time</span>
+          <span class="meta-value">$case_datetime</span>
+        </div>
+        <div class="meta-item meta-item-wide">
+          <span class="meta-label">Referring operator</span>
+          <span class="meta-value">$operator_name</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section summary-section">
+      <div class="summary-grid">
+        <div class="referral-card $referral_class">
+          <p class="summary-kicker">Referral decision</p>
+          <h2>$referral_decision</h2>
+          <p class="referral-copy">$referral_label</p>
+        </div>
+        <div class="findings-card">
+          <div class="finding-row">
+            <span class="finding-label">DR Grade</span>
+            <span class="finding-value">$grade_display</span>
+          </div>
+          <div class="finding-row">
+            <span class="finding-label">Confidence</span>
+            <span class="finding-value">$confidence_tier</span>
+          </div>
+          <p class="finding-support">$confidence_explanation</p>
+          <p class="clinical-summary">$clinical_summary</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section imaging-section">
+      <div class="section-heading">
+        <h2>Fundus image review</h2>
+      </div>
+      <div class="figure-grid">
+        $original_figure
+        $overlay_figure
+      </div>
+      <p class="figure-caption">Left: Original fundus image. Right: AI-detected lesion overlay.</p>
+    </section>
+
+    <section class="section lesion-section">
+      <div class="section-heading">
+        <h2>Lesion findings</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Lesion</th>
+            <th>Detected</th>
+          </tr>
+        </thead>
+        <tbody>
+          $lesion_rows
+        </tbody>
+      </table>
+    </section>
+
+    $notes_section
+
+    <section class="section model-section">
+      <div class="section-heading">
+        <h2>Model information</h2>
+      </div>
+      <div class="model-grid">
+        <div class="meta-item">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">$model_version</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Architecture</span>
+          <span class="meta-value">Dual-encoder (RETFound ViT-L + SAM ViT-H)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Validation performance</span>
+          <span class="meta-value">QWK 0.853, RefAUC 0.926 (FGADR benchmark)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Training institution</span>
+          <span class="meta-value">BITS Pilani</span>
+        </div>
+        <div class="meta-item meta-item-wide">
+          <span class="meta-label">Processed at</span>
+          <span class="meta-value">$processed_at</span>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

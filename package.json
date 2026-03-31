@@ -1,0 +1,15 @@
+{
+  "name": "visara",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build:web",
+    "lint": "npm run lint:web",
+    "dev:web": "npm run dev --workspace @visara/web",
+    "build:web": "npm run build --workspace @visara/web",
+    "lint:web": "npm run lint --workspace @visara/web",
+    "test:e2e": "npm run test:e2e --workspace @visara/web"
+  }
+}

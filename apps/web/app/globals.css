@@ -1,0 +1,90 @@
+@import "@fontsource/inter/index.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 45% 11%;
+    --foreground: 210 36% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 30% 16%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 35% 96%;
+    --secondary-foreground: 222 24% 20%;
+    --muted: 214 30% 92%;
+    --muted-foreground: 215 16% 42%;
+    --border: 214 28% 87%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+    --radius: 1rem;
+    --clinical-navy: 222 45% 11%;
+    --clinical-teal: 199 89% 48%;
+    --clinical-amber: 38 92% 50%;
+    --clinical-orange: 27 96% 61%;
+    --clinical-red: 0 84% 60%;
+    --clinical-green: 142 71% 45%;
+    --clinical-blue: 217 91% 60%;
+    --clinical-cyan: 188 94% 43%;
+    --font-sans: "Inter", "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, rgba(14, 165, 233, 0.18), transparent 28rem),
+      linear-gradient(180deg, #0f1629 0%, #0f1629 40%, #131d33 100%);
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 255, 0.94));
+    box-shadow: 0 24px 80px rgba(7, 11, 23, 0.24);
+  }
+
+  .clinical-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-position: center center;
+    background-size: 56px 56px;
+  }
+
+  .progress-shimmer {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-shimmer::after {
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    animation: shimmer 1.8s infinite;
+    content: "";
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
